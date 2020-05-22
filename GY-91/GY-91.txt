@@ -1,0 +1,42 @@
+Specifications:
+ Sensor Chips: MPU-9250 + BMP280
+ Interface: standard IIC / SPI communications protocol
+ Operating Voltage range: 3.0V – 5.0V (on-board low dropout regulator)
+ Module size 14.3mm * 20.5mm (More compact than GY-80)
+ Resolution: 16bit AD converter, 16-bit data output
+ Gyroscopes range: ± 250, 500, 1000, 2000 ° / s
+ Acceleration range: ± 2 ± 4 ± 8 ± 16g
+ Field range: ± 4800uT
+ Pressure range: 300-1100hPa
+ 2.54mm pitch
+
+
+устройство      датчик      	I2C Адрес
+MPU9250	    аксел/гироскоп	0x68
+AK8963	    магнитометр	    	0x0C
+
+
+https://github.com/tuupola/micropython-mpu9250/issues/12
+https://github.com/ricardozago/GY91-MPU9250-BMP280
+
+https://github.com/avislab/sensorstest/tree/master/MPU-9250
+https://www.youtube.com/watch?v=zi9kTkgpU6g
+
+https://github.com/Naohiro2g/MPU6050_teapot_demo - управление чайником
+http://blog.bitify.co.uk/2013/11/3d-opengl-visualisation-of-data-from.html?m=1
+
+https://www.youtube.com/watch?v=PMTW73KUHKE
+
+https://github.com/FaBoPlatform/FaBo9AXIS-MPU9250-Python
+https://github.com/pimoroni/bmp280-python
+https://github.com/tuupola/micropython-mpu9250#gyro-calibration
+https://pypi.org/project/mpu9250-jmdev/
+https://masterkit.ru/blog/articles/raspberry-pi-3-model-b-podklyuchaem-datchik-atmosfernogo-davleniya-bmp180
+https://howtomechatronics.com/how-it-works/electrical-engineering/mems-accelerometer-gyrocope-magnetometer-arduino/
+https://www.raspberrypi.org/forums/viewtopic.php?f=37&t=102173&p=707637&hilit=gy+91#p707637
+
+
+
+
+???
+https://github.com/mikechan0731/GY-91_and_PiCamera_RaspberryPi
