@@ -1,0 +1,81 @@
+# Сайт
+http://www.radiomexanik.spb.ru/blogi/entry/delaem-umnyj-dom-s-nulya-chast-6-ustanovka-golosovogo-dvizhka-v-majordomo-teper-umnyj-dom-razgovarivaet.html
+https://geekbrains.ru/posts/tts_python
+https://launchpad.net/~linvinus/+archive/ubuntu/rhvoice - нужно проверить !!!
+
+# Установка espeak
+sudo apt-get install python-espeak
+wget http://espeak.sourceforge.net/data/ru_dict-48.zip
+unzip ru_dict-48.zip
+sudo mv ru_dict-48 /usr/lib/arm-linux-gnueabihf/espeak-data/ru_dict
+
+# Установка зависимостей
+sudo apt-get install -y scons gcc git flite flite1-dev expat libunistring-dev libsox-dev libpulse-dev libao-dev speech-dispatcher
+sudo apt-get install python-lxml
+
+# Переходим в папку usrsrc
+cd /usr/src/
+
+# Скачиваем исходники голосового движка RHVoice
+git clone https://github.com/Olga-Yakovleva/RHVoice.git
+
+# Переходим в папку RHVoice
+cd RHVoice
+
+# Проверяем, все ли достаточно для сборки
+scons check
+
+# Собираем программу (RHVoice)
+sudo scons
+
+# Устанавливаем программу (RHVoice)
+sudo scons install
+
+# Создаем необходимые связки и формируем кэш динамических библиотек
+sudo ldconfig
+
+# Проверка
+echo "Привет я синтезатор речи" | RHVoice-test -p anna
+os.system("echo 'Привет я синтезатор речи' | RHVoice-test -p Aleksandr")
+os.system("spd-say -o rhvoice -y Aleksandr -r 30 -w 'Привет я синтезатор речи'")
+
+# Подключение
+sudo cp -a /usr/local/bin/sd_rhvoice /usr/lib/speech-dispatcher-modules
+
+# Конфигурационные файлы
+sudo nano /etc/speech-dispatcher/modules/rhvoice.conf
+добавить:
+RHVoiceDataPath "/usr/local/share/RHVoice"
+RHVoiceConfigPath "/usr/local/etc/RHVoice/"
+RHVoicePunctuationMode 
+#RHVoicePunctuationList "@+_"
+RHVoiceDefaultVoice "Aleksandr"
+#RHVoiceDefaultVariant "Pseudo-English"
+Debug
+
+sudo nano /etc/speech-dispatcher/speechd.conf
+добавить текст или снять #:
+AddModule "rhvoice" "sd_rhvoice" "rhvoice.conf"
+
+Удаление
+sudo scons --clean install RHVoice
+sudo rm -r /usr/bin/RHVoice
+sudo rm -r /usr/share/RHVoice/
+sudo rm -r /usr/share/doc/rhvoice/
+sudo rm -r /var/lib/dpkg/info/rhvoice.prerm
+
+___________________________________________________________________________________________________
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=249466
+Делал так:
+sudo apt-get install scons gcc pkg-config git libpulse-dev speech-dispatcher
+sudo apt-get install libao-dev libportaudio-dev
+sudo apt-get install portaudio19-dev
+sudo apt-get install python-lxml
+Возможно не нужно:
+sudo apt-get install flite flite1-dev
+sudo apt-get install expat libunistring-dev libsox-dev
+sudo apt-get install mplayer
+___________________________________________________________________________________________________
+
+https://www.youtube.com/watch?v=5ZtyZTZLCOM
