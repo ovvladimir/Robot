@@ -1,0 +1,5 @@
+# https://github.com/sensidev/VL53L0X_rasp_python/tree/master/python
+https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi
+https://learn.adafruit.com/adafruit-vl53l0x-micro-lidar-distance-sensor-breakout/python-circuitpython
+https://github.com/pimoroni/VL53L0X-python
+pip3 install smbus2

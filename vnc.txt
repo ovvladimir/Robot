@@ -1,0 +1,12 @@
+vncserver :1
+netstat -pan|grep 'vnc'
+192.168.100.7::5901
+
+mkdir /home/pi/.config/autostart
+nano /home/pi/.config/autostart/vnc.desktop
+
+[Desktop Entry]
+Type=Application
+Name=VNCServer
+Exec=vncserver :1
+StartupNotify=false
