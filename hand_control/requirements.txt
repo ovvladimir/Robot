@@ -1,7 +1,7 @@
 numpy==1.16.6
 tensorflow==1.13.1
 tflearn==0.3.2
-opencv-contrib-python==4.1.0.25
+opencv-contrib-python==4.2.0.32
 imutils
 scipy
 # adafruit-circuitpython-servokit==1.1.1
